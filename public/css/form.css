@@ -1,0 +1,17 @@
+#form{
+  display: flex;
+  flex-direction: column;
+  width:340px;
+  margin: auto;
+}
+#form label{
+  margin: 8px 0;
+  color: rgb(2, 39, 184);
+}
+#form input,textarea{
+  font-size: 14px;
+  padding: 3px;
+}
+h1{
+  color: blueviolet;
+}

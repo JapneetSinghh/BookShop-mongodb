@@ -1,0 +1,52 @@
+<%- include('includes/head.ejs') %>
+  <%- include('includes/navbar.ejs') %>
+    <br>
+    <main id="container">
+      <h1>
+
+        <%if (products.length>0){%>
+          <h1 class="center">Your Cart</h1>
+          <section id="container">
+            <div class="products">
+              <% products.forEach(p=>{ %>
+                <article class="product">
+                  <div class="product-image">
+                    <img src="<%=p.productData.productImage%>" alt="">
+                  </div>
+                  <div class="product-details">
+                    <p class="product-name">
+                      <%= p.productData.productName%>
+                    </p>
+                    <div class="flex">
+                      <p class="product-price">
+                        <%= p.productData.productPrice%>$
+                      </p>
+                      <p>Qty: <%= p.qty%>
+                      </p>
+                    </div>
+
+                    <div class="center">
+                      <form action="/removeFromCart" method="post">
+                        <button type="submit" class="btn">Remove</button> &nbsp;
+                        <input type="hidden" name="productId" value="<%=p.productData.productId%>">
+                        <a class="btn" href="getDetails/<%= p.productData.productId %>">Details</a>
+                      </form>
+                    </div>
+                  </div>
+
+                </article>
+                <% })%>
+            </div>
+          </section>
+          <br>
+          <h1 class="center">Cart Total : <%= totalPrice%>$
+          </h1>
+          <%}else{%>
+            <h1 class="center">No Products In Cart Yet</h1>
+            <%}%>
+      </h1>
+      <br>
+
+    </main>
+
+    <%- include('includes/end.ejs') %>
