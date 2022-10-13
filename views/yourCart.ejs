@@ -11,25 +11,25 @@
               <% products.forEach(p=>{ %>
                 <article class="product">
                   <div class="product-image">
-                    <img src="<%=p.productData.productImage%>" alt="">
+                    <img src="<%=p.imageUrl%>" alt="">
                   </div>
                   <div class="product-details">
                     <p class="product-name">
-                      <%= p.productData.productName%>
+                      <%= p.name%>
                     </p>
                     <div class="flex">
                       <p class="product-price">
-                        <%= p.productData.productPrice%>$
+                        <%= p.price%>$
                       </p>
-                      <p>Qty: <%= p.qty%>
+                      <p>Qty: <%= p.quantity%>
                       </p>
                     </div>
 
                     <div class="center">
                       <form action="/removeFromCart" method="post">
                         <button type="submit" class="btn">Remove</button> &nbsp;
-                        <input type="hidden" name="productId" value="<%=p.productData.productId%>">
-                        <a class="btn" href="getDetails/<%= p.productData.productId %>">Details</a>
+                        <input type="hidden" name="productId" value="<%=p._id%>">
+                        <a class="btn" href="getDetails/<%= p._id %>">Details</a>
                       </form>
                     </div>
                   </div>
@@ -39,14 +39,25 @@
             </div>
           </section>
           <br>
-          <h1 class="center">Cart Total : <%= totalPrice%>$
-          </h1>
-          <%}else{%>
-            <h1 class="center">No Products In Cart Yet</h1>
-            <%}%>
+      
       </h1>
       <br>
 
     </main>
-
+    <div style="text-align: center; background-color: white;padding: 10px; box-shadow:8px 4px 4px 11px rgba(0, 0, 0, 0.09); position: fixed;bottom: 0;width: 100%;" class="footer">
+      <h1 style="margin: 20px;" class="center">Cart Total : <%= totalPrice%>$
+      </h1>
+      <form action="/orderNow" method="post">
+        <button  type="submit" class="btn center">Order Now</button>
+      </form>
+    </div>
+    <br>
+    <br> <br>
+    <br>
+    <br> <br>
+    <br>
+    <br> <br>
+    <%}else{%>
+      <h1 class="center">No Products In Cart Yet</h1>
+      <%}%>
     <%- include('includes/end.ejs') %>
