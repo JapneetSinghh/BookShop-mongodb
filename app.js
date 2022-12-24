@@ -38,10 +38,10 @@ app.use(adminRoutes.routes);
 const errorController = require('./controller/error')
 app.use(errorController.get404);
 
-
+const port  = process.env.PORT || 2100;
 // STARTING THE SERVER AND CONNECTING TO MONGODB
 mongoConnect(()=>{
-  const port  = process.env.PORT || 2100;
+  
   app.listen(port);
 })
 
