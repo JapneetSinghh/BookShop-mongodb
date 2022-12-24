@@ -41,7 +41,7 @@ app.use(errorController.get404);
 
 // STARTING THE SERVER AND CONNECTING TO MONGODB
 mongoConnect(()=>{
-  const poer =process.env.PORT || 2100;
+  const port  = process.env.PORT || 2100;
   app.listen(port);
 })
 
